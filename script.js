@@ -49,6 +49,7 @@ browserPromise.then(function(browser){
     }
     return Promise.all(statearr);
 }).then(function(data){
+    statearr = data // We got the ranking of all states in India... line(16)
     // console.log(data);
     count = data.indexOf(state); // We got the ranking of the state all over India in terms of total confirmed covid cases.... Line(17)
     // console.log(count);
@@ -64,35 +65,35 @@ browserPromise.then(function(browser){
 }).then(function(data){
     for(let i of data){
         let innertext = tab.evaluate(function(ele){
-            return ele.textContent; // got inner content for all the promises int data
+            return ele.textContent; // got inner content for all the promises internal data
         },i);
         detailsarr.push(innertext);
     }
-    return Promise.all(detailsarr);
+    return Promise.all(detailsarr); // returned the Promises of all internal data
 }).then(function(data){
-    detailsarr = data; 
+    detailsarr = data; // all details we got...  Line(13)
     let start = (count)*6;
-    let end = (count+1)*6-1;
+    let end = (count+1)*6-1; // Mathematics involved to track all data for our specific state
     for(let k = start;k<=end;k++){
-        detailsarrfinal.push(data[k]);
+        detailsarrfinal.push(data[k]); // pushing the details which are relevent to us..... line(12)
     }
     for(let a = 0;a<7;a++){
         if(a==0){
-            ans[headingarr[a]] = state;
-            continue;
+            ans[headingarr[a]] = state; // since 1st property involve state name that can be extracted from state variable
+            continue; 
         }
-        ans[headingarr[a]] = detailsarrfinal[a-1];
+        ans[headingarr[a]] = detailsarrfinal[a-1]; // completing ans object
     }
     return ans;
 }).then(function(arr){
     if(state==="India"){
-        console.log("Rank -> -----" );
+        console.log("Rank -> -----" ); // India will have No rank
     }else{
-        console.log(`Rank -> ${count+1}`);
+        console.log(`Rank -> ${count+1}`); // using count we can show the rank of the state in india in terms of highest no. of confirmed covid cases
     }
-    console.log(ans);
+    console.log(ans); // our final ans for which this project is made for... line(15)
 }).catch(function(err){
-    console.log(err);
+    console.log("Check your spelling again..."); // error handling using catch
 });
 
 
