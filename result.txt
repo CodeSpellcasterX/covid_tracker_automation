@@ -1,0 +1,8 @@
+Rank -> 17
+{"State/UT":"Punjab","Confirmed":"2,69,733","Active":"28,015","Recovered":"2,34,270","Deceased":"7,448","Tested":"63.1L","Vaccine Doses Administered":"16.7L"}
+Rank -> 1
+{"State/UT":"Maharashtra","Confirmed":"33,43,951","Active":"5,36,682","Recovered":"27,48,153","Deceased":"57,638","Tested":"2.2Cr","Vaccine Doses Administered":"96.3L"}
+Rank -> 6
+{"State/UT":"Delhi","Confirmed":"7,14,423","Active":"28,773","Recovered":"6,74,415","Deceased":"11,235","Tested":"1.5Cr","Vaccine Doses Administered":"19.6L"}
+Rank -> 15
+{"State/UT":"Haryana","Confirmed":"3,13,441","Active":"19,453","Recovered":"2,90,736","Deceased":"3,252","Tested":"65.6L","Vaccine Doses Administered":"22.1L"}
