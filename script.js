@@ -36,7 +36,7 @@ for (let z = 1; z < data.length - 1; z++) {
         let pageOpenPromise = tab.goto(sitelink); // visit the site from where we will extract data
         return pageOpenPromise;
     }).then(function () {
-        let waitPromise = tab.waitForSelector(".cell.heading", { visible: true }); // waiting for the visibility of headings to put in headingarr... Line(11)
+        let waitPromise = tab.waitForSelector(".cell.heading", { visible: true }); // waiting for the visibility of headings to put in headingarr... Line(23)
         return waitPromise;
     }).then(function () {
         let allheadingsPromise = tab.$$(".cell.heading"); // promise to have all the headings with this unique class
@@ -50,7 +50,7 @@ for (let z = 1; z < data.length - 1; z++) {
         }
         return Promise.all(headingarr);
     }).then(function (data) {
-        headingarr = data; // all heading we got...  Line(11)
+        headingarr = data; // all heading we got...  Line(23)
         let allstatesPromise = tab.$$(".state-name.fadeInUp"); // to get states name
         return allstatesPromise;
     }).then(function (data) {
@@ -62,9 +62,9 @@ for (let z = 1; z < data.length - 1; z++) {
         }
         return Promise.all(statearr);
     }).then(function (data) {
-        statearr = data // We got the ranking of all states in India... line(16)
+        statearr = data // We got the ranking of all states in India... line(28)
         // console.log(data);
-        count = data.indexOf(state); // We got the ranking of the state all over India in terms of total confirmed covid cases.... Line(17)
+        count = data.indexOf(state); // We got the ranking of the state all over India in terms of total confirmed covid cases.... Line(29)
         // console.log(count);
         return data;
     }).then(function (data) {
@@ -84,11 +84,11 @@ for (let z = 1; z < data.length - 1; z++) {
         }
         return Promise.all(detailsarr); // returned the Promises of all internal data
     }).then(function (data) {
-        detailsarr = data; // all details we got...  Line(13)
+        detailsarr = data; // all details we got...  Line(25)
         let start = (count) * 6;
         let end = (count + 1) * 6 - 1; // Mathematics involved to track all data for our specific state
         for (let k = start; k <= end; k++) {
-            detailsarrfinal.push(data[k]); // pushing the details which are relevent to us..... line(12)
+            detailsarrfinal.push(data[k]); // pushing the details which are relevent to us..... line(24)
         }
         for (let a = 0; a < 7; a++) {
             if (a == 0) {
@@ -114,7 +114,7 @@ for (let z = 1; z < data.length - 1; z++) {
         fans = fans + JSON.stringify(arr);
         fans = fans + "\n";
 
-        console.log(arr); // our final ans for which this project is made for... line(15)
+        console.log(arr); // our final ans for which this project is made for... line(27)
         return arr;
     }).then(function () {
         tab.close();
