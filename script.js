@@ -1,8 +1,17 @@
+// script.js file is the actual code that is running
+// result.txt will display and store the data of the required states
+//  script1.txt is the input area for us
+
 const pup = require('puppeteer');
 
 const fs = require("fs");
-let data = fs.readFileSync("script1.txt", "utf-8").split("\r\n");
-let fans = "";
+let data = fs.readFileSync("script1.txt", "utf-8").split("\r\n"); // to read input from script1.js file
+let fans = "";       // data to be stored in result.txt;
+
+if(data.length==2){
+    console.log("Enter any state Name");
+    return;
+}
 
 for (let z = 1; z < data.length - 1; z++) {
 
@@ -99,6 +108,9 @@ for (let z = 1; z < data.length - 1; z++) {
             fans = fans + (`Rank -> ${count + 1}`);
             fans = fans + "\n";
         }
+        if(state!="India"){
+            console.log(ranking(count+1));
+        }
         fans = fans + JSON.stringify(arr);
         fans = fans + "\n";
 
@@ -113,9 +125,23 @@ for (let z = 1; z < data.length - 1; z++) {
 
 }
 
+function ranking(rank){
+    if(rank<=6){
+        return "Crtical";
+    }else if(rank<=12){
+        return "Worse";
+    }else if(rank<=18){
+        return "Bad";
+    }else if(rank<=24){
+        return "Average";
+    }else{
+        return "Normal"
+    }
+}
+
 setTimeout(function () {
-     fs.writeFileSync("result.txt",fans);
-    }, 30000);
+     fs.writeFileSync("result.txt",fans);   // to store data in result.txt file
+    }, 30000);     // this milliseconds can be varied accordingly to the data input, system configuration and internet availability....
 
 
 
